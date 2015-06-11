@@ -14,13 +14,12 @@ Set-Up should take less than 10 minutes.
 4. Go to [yourDomain].com/setup.php. Fill out all of the required fields, and press Set Up Site
 5. Enter in your desired login credentials, and press Sign Up
 6. Start building your site. 
+7. Protect setup.sql and setup.php: change the permissions, or copy them to your computer and delete them from your server.
 
 
 REMAINING TASKS FOR SETUP
 • Pare down non-essential setup.php fields; clearly indicate required fields
-• Instructions to protect setup.SQL and login/register.php
 • Video setup tutorial w/ screenshots and voiceover
-• Simplify log-in mechanism and check security.
 • Backup configuration w/ CRON script.
 
 TERMS OF USE
