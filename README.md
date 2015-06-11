@@ -23,7 +23,7 @@ REMAINING TASKS FOR SETUP
 5. Video setup tutorial w/ screenshots and voiceover
 
 TERMS OF USE
-1. Unlimited use for personal non-commercial applications. 
+1. Unlimited use for personal non-commercial applications.
 2. Any use by a company, or an individual with paid advertisements requires a license. 
 
 Contact Mike at Michael.Femia@gmail.com with any inquiries.
