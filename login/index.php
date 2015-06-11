@@ -1,25 +1,26 @@
 <?php 
 include('../global_functions.php');
 sec_session_start();
+$errorMessage="";
+
 ///////////////////////////////////////////////////
 ////////        REGISTER A NEW USER        ////////
 ///////////////////////////////////////////////////
-if( ($_GET['register']=="1") && (isset($_POST['personname'],$_POST['username'], $_POST['email'], $_POST['p'])) ){
-    $error_msg = "";
+if( ($_GET['register']=="1") && (isset($_POST['personname'],$_POST['username'], $_POST['email'], $_POST['p'])) ){    
     // Sanitize and validate the data passed in
     $personname = filter_input(INPUT_POST, 'personname', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error_msg .= 'The email address you entered is not valid';
+        $errorMessage.= 'The email address you entered is not valid';
     }
  
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // The hashed pwd should be 128 characters long.
         // If it's not, something really odd has happened
-        $error_msg .= 'Invalid password configuration.';
+        $errorMessage .= 'Invalid password configuration.';
     }
  
     //Does this email address already have an account?
@@ -30,12 +31,14 @@ if( ($_GET['register']=="1") && (isset($_POST['personname'],$_POST['username'], 
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows == 1) {
-            $error_msg .= 'A user with this email address already exists.';
+            $errorMessage .= 'A user with this email address already exists.';
         }
     } 
-    else {$error_msg .= 'Database error';}
+    //If everything else is OK, there is a database problem
+    else {$errorMessage .= 'Database error';}
  
-    if (empty($error_msg)) {
+ 	//Proceed if there are no issues with the proposed credentials
+    if (empty($errorMessage)) {
         // Create a random salt
         $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
         $password = hash('sha512', $password . $random_salt);
@@ -43,22 +46,24 @@ if( ($_GET['register']=="1") && (isset($_POST['personname'],$_POST['username'], 
         // Insert the new user into the database 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO members (personname,username, email, password, salt) VALUES (?,?, ?, ?, ?)")) {
             $insert_stmt->bind_param('sssss',$personname,$username, $email, $password, $random_salt);
+            
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {}
+            
             //Send a confirmation e-mail
-			$send=array();
-			$send['message']="<html><head><title>Glad To Have You With Us</title></head><body>";
-			$send['message'].='<h2 style="color:#B72E2E;font-style:italic;">Log-In To '.$domain_title.'</h2>';
-			$send['message'].='<p><b><a href="'.$html_root.'/login/">Log-in to your account</a></b></p>';
-			$send['message'].="</body></html>";
-			$send['message'].=date(DATE_RFC2822)." end of message.";
+			$message="<html><head><title>Glad To Have You With Us</title></head><body>";
+			$message.='<h2 style="color:#B72E2E;font-style:italic;">Log-In To '.$domain_title.'</h2>';
+			$message.='<p><b><a href="'.$html_root.'/login/">Log-in to your account</a></b></p>';
+			$message.="</body></html>";
+			$message.=date(DATE_RFC2822)." end of message.";
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 			$headers .= 'From: <'.$admin_email.'>' . "\r\n";
 		
-			//mail($recipient,$subject,$message,$headers)
-			$success=mail($admin_email,"Welcome To ".$domain_title,$send['message'],$headers);
-			$success=mail($email,"Welcome To ".$domain_title,$send['message'],$headers);
+			//Prompt the user to login
+			//Also notify admin of a new account
+			$success=mail($admin_email,"Welcome To ".$domain_title,$message,$headers);
+			$success=mail($email,"Welcome To ".$domain_title,$message,$headers);
         }
         header('Location:'.$html_root.'/login/?new=1');
     }
@@ -96,6 +101,7 @@ if(isset($_GET['r'])){
 		header('Location:'.$html_root.'/login/');
 	}
 }
+
 if(isset($_POST['email'],$_POST['p'],$_GET['r'])){
 	//Dual hash password and create new salt
 	//Get memberID
@@ -123,9 +129,9 @@ if(isset($_POST['email'],$_POST['p'],$_GET['r'])){
 			if (strlen($password) != 128) {
 				// The hashed pwd should be 128 characters long.
 				// If it's not, something really odd has happened
-				$error_msg .= 'Invalid password configuration.';
+				$errorMessage .= 'Invalid password configuration.';
 			}
-			if (empty($error_msg)) {
+			if (empty($errorMessage)) {
 				//Update Password
 				$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
 				$password = hash('sha512', $password . $random_salt);
@@ -142,8 +148,9 @@ if(isset($_POST['email'],$_POST['p'],$_GET['r'])){
 				$mysqli->query($q3);
 			}
 		}
+		else{$errorMessage.="This code is not valid.";}
 	}
-	else{$error="";}
+	else{$errorMessage.="This e-mail is not registered.";}
 }
 
 //////////////////////////////////////////
@@ -156,9 +163,7 @@ if(isset($_POST['email'], $_POST['p'])) {
     if (login($email, $password, $mysqli) == true) {
         header('Location:'.$html_root.'/editable.php');
     } 
-    else {
-        header('Location:'.$html_root.'/login/?error=1');
-    }
+    else {}
 } 
 
 ////////////////////////////////////////////////////////////
@@ -185,7 +190,7 @@ if($_GET['register']=="1"){
 				print'<legend>'.$legendText.'</legend>';
 				
 				//Error Messages
-				if (isset($_GET['error'])) {echo '<p style="width:90%; margin:0 auto 0 auto;font-weight:bold;" class="error">Error Logging In!</p>';}
+				if (strlen($errorMessage)>0) {echo '<p style="width:99%; margin:0 auto 0 auto;font-weight:bold;" class="error">PROBLEM: '.$errorMessage.'</p>';}
 			
 				//New user registered
 				if($_GET['new']=="1"){

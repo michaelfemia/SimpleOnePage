@@ -1,4 +1,6 @@
-<? if($editingPage==true){include('mgmt/editingHead.php');}?>
+<? 
+//error_reporting(0);
+if($editingPage==true){include('mgmt/editingHead.php');}?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
@@ -21,7 +23,7 @@
 	<meta name="twitter:description" content="<? print  $searchDescription;?>"/>
 	<meta name="twitter:image:src" content="<? print $socialMediaThumbIMG;?>"/>
 	<meta name="twitter:url" content="<? echo htmlentities(curPageURL());?>"/>    
-	<link rel="stylesheet" href="<? print $html_root.'/css/primary.css';?>" />
+	<link rel="stylesheet" href="<? print $html_root; ?>css/primary.css" />
 	<? 
 	#########################################
 	########        EXTRA CSS        ########
@@ -53,7 +55,7 @@
 	if($chartPage=="1"){$JSScripts[]='js/Chart.min.js';}
 	foreach($JSScripts as $script){
 		print '<script type="text/javascript" ';
-		print 'src="'.$html_root.'/'.$script.'"></script>'."\n";
+		print 'src="'.$html_root.$script.'"></script>'."\n";
 	}
 	if($editingPage==true){
 			print'<link rel="stylesheet" href="css/editor.css" />';
@@ -85,7 +87,7 @@ print '<div id="navWrapper">';
 		//HOME BUTTON & NAV MENU GRID BUTTON
 		print '<div id="navMenuDropdown">';
 		print 	'<button type="button">';
-		print 		'<img src="'.$html_root.'/img/icons/menulines.png"  height="30" width="30" alt="Show Navigation"/>';
+		print 		'<img src="img/icons/menulines.png"  height="30" width="30" alt="Show Navigation"/>';
 		print 	'</button>';
 		print 		'<div><a href="javascript:void(0)">Menu</a></div>';
 		print '</div><!--#NAVBUTTONS-->';

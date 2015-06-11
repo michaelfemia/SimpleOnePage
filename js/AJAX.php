@@ -223,7 +223,7 @@ if(isset($_POST['delete'])){
 	switch($_POST['delete']){
 		case "block":
 			$condition="fkBlock='".$_POST['blockID']."'";
-			deleteQuery("tblPageBlocks",$condition);
+			deleteQuery("tblBlockElements",$condition);
 			$condition="pkPageBlockID='".$_POST['blockID']."'";
 			deleteQuery("tblPageBlocks",$condition);
 			reorderAfterDelete("pkPageBlockID","tblPageBlocks","fldNavRank","");

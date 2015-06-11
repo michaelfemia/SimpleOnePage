@@ -42,7 +42,7 @@
 		}
 		.lgtext,
 		#showcaseManagement>fieldset>input{
-			width:90%;
+			width:98%;
 			line-height:24px;
 			font-size:18px;
 			height:36px;
@@ -354,8 +354,6 @@
 			background-repeat:none;
 			background-size:cover;
 			margin:0 auto 0 auto;
-			height:600px;
-			width:1024px;
 		}
 		#loginform fieldset{background-color:#EBEBEB;}
 		#loginform > a{display:inline;text-transform:uppercase;color:#A32929;}

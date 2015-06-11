@@ -1,4 +1,5 @@
 <?
+error_reporting(0);
 $sql="SELECT fldHTMLID,fldContentType,fldDescription,fldValue ";
 $sql.="FROM tblHomepageManagement";
 $r=$mysqli->query($sql);

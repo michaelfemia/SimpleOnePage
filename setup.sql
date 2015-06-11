@@ -46,14 +46,7 @@ CREATE TABLE `tblCMS` (
   `fldEntity` varchar(35) NOT NULL,
   `fldValue` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-CREATE TABLE `tblBlockElementTypes` (
-  `pkBlockElementTypeID` int(11) NOT NULL auto_increment,
-  `fldBlockElementTypeName` varchar(100) NOT NULL,
-  `fldBlockElementTypeOpeningTag` varchar(150) NOT NULL,
-  `fldBlockElementTypeClosingTag` varchar(150) NOT NULL,
-  `fldBlockElementTypeEditingNode` varchar(5000) NOT NULL,
-  PRIMARY KEY  (`pkBlockElementTypeID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
 CREATE TABLE `tblBlockElements` (
   `pkBlockElementID` int(11) NOT NULL auto_increment,
   `fkBlock` int(5) NOT NULL,
@@ -76,3 +69,37 @@ CREATE TABLE `login_attempts` (
   `user_id` int(11) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `tblBlockElementTypes` (
+  `pkTypeID` int(11) NOT NULL auto_increment,
+  `fldTypeName` varchar(100) NOT NULL,
+  `fldSelectName` varchar(80) NOT NULL,
+  `fldContentType` tinyint(4) NOT NULL,
+  `fldHTMLType` varchar(10) NOT NULL,
+  PRIMARY KEY  (`pkTypeID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `tblBlockElementTypes`
+--
+
+INSERT INTO `tblBlockElementTypes` VALUES(1, 'blockHeadline', 'Headline', 1, 'h2');
+INSERT INTO `tblBlockElementTypes` VALUES(2, 'blockText', 'Paragraph Text', 2, 'p');
+INSERT INTO `tblBlockElementTypes` VALUES(3, 'galleryStrip', 'Filmstrip Gallery', 4, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(4, 'table', '3- Column Table', 5, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(5, 'largeImage', 'Full Screen Image', 3, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(6, 'galleryLinks', 'Modal Gallery', 4, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(7, 'parallaxParent', 'Full Parallax', 3, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(8, 'imageArticleLink', 'Image Links', 4, 'div');
+INSERT INTO `tblBlockElementTypes` VALUES(9, 'quote', 'Quote', 2, 'p');
+INSERT INTO `tblBlockElementTypes` VALUES(10, 'vimeoEmbed', 'Vimeo Embed', 6, 'iframe');
+
+INSERT INTO `tblPageBlocks` (`pkPageBlockID`, `fldPageName`, `fldPageLink`, `fldNavRank`) VALUES
+(40, 'New Section', 'newsection', 1);
+
+INSERT INTO `tblBlockElements` (`pkBlockElementID`, `fkBlock`, `fkElementType`, `fldPosition`, `fldValue`) VALUES
+(90, 40, 1, 1, 'This is a page section.'),
+(91, 40, 2, 2, 'Clicking MENU in the top left corner opens a set of controls to add and remove sections, edit their names, and rearrange their order. If your sections get lengthy, you can toggle them closed by clicking the section name that precedes each section editor, in bold black font.'),
+(97, 40, 2, 3, 'To add child elements to a section, use the controls at the bottom of the editor (a dropdown menu with an "Add" button next to it). There are a number of text and image formatting options. Rearrange or delete these child elements with the controls to the leftâ€“ the up/down arrows and trash.'),
+(99, 40, 2, 4, 'To edit headers, paragraphs, quotes, and tables, simply click the text you want to edit, and an input field will appear. Press enter/return or click anywhere else on the page to save your changes.');
+

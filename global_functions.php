@@ -1,4 +1,6 @@
 <? header("Content-Type: text/html; charset=utf-8");
+error_reporting(0);
+date_default_timezone_set('America/New_York');
 $root='/';
 $blueImp=false;
 include('mgmt/globalVariables.php');
@@ -513,6 +515,7 @@ function sec_session_start() {
     //session_regenerate_id();//regenerate the session, delete the old one. 
 }
 function login($email, $password, $mysqli) {
+    global $errorMessage;
     // Using prepared statements means that SQL injection is not possible. 
     if ($stmt = $mysqli->prepare("SELECT id, personname, username, password, salt 
         FROM members
@@ -535,6 +538,7 @@ function login($email, $password, $mysqli) {
             if (checkbrute($user_id, $mysqli) == true) {
                 // Account is locked 
                 // Send an email to user saying their account is locked
+                $errorMessage="Too many failed login attempts.";
                 return false;
             } else {
                 // Check if the password in the database matches
@@ -563,11 +567,13 @@ function login($email, $password, $mysqli) {
                     $now = time();
                     $mysqli->query("INSERT INTO login_attempts(user_id, time)
                                     VALUES ('$user_id', '$now')");
+                    $errorMessage="Password isn't a match.";
                     return false;
                 }
             }
         } else {
             // No user exists.
+            $errorMessage="This username is not registered.";
             return false;
         }
     }

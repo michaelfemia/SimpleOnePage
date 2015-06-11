@@ -14,14 +14,14 @@ print '</div><!--#contentWrapper-->';
 	<div class="department" style="padding:0;"
 		<div id="contactVisits">
 			<div id="contactMeta" style="max-width:330px;">
-				<h2 class="blockHeadline" style="text-align:left;color:#89CEDE;">Contact Us</h2>
+				<h2 class="blockHeadline" style="text-align:left;color:#89CEDE;"></h2>
 				<p id="contactAddress1" class="blockText" style="width:100%"><? print $currentValue['contactAddress1'];?></p>
 				<? print $updateFields['contactAddress1'];?>
 				<p id="contactAddress2" class="blockText" style="width:100%"><? print $currentValue['contactAddress2'];?></p>
 				<? print $updateFields['contactAddress2'];?>
-				<p class="blockText" style="width:100%"><b style="color:#DC4E00">Hours:</b><span id="contactHours"><? print $currentValue['contactHours'];?></span></p>
+				<p class="blockText" style="width:100%"><b style="color:#DC4E00"></b><span id="contactHours"><? print $currentValue['contactHours'];?></span></p>
 				<? print $updateFields['contactHours'];?>
-				<p class="blockText" style="width:100%"><b style="color:#DC4E00">Phone: </b><span id="contactPhone"><? print $currentValue['contactPhone'];?></span></p>
+				<p class="blockText" style="width:100%"><b style="color:#DC4E00"></b><span id="contactPhone"><? print $currentValue['contactPhone'];?></span></p>
 				<? print $updateFields['contactPhone'];?>
 				<p id="contactEmail" class="blockText" style="width:100%"><? print $currentValue['contactEmail'];?></p>
 				<? print $updateFields['contactEmail'];?>
