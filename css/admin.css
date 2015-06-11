@@ -1,0 +1,443 @@
+		body,html{
+			min-width:768px;
+			background-color: #F2F2F2;
+			}
+		#articleform{background-color:#FFFFFF;}
+		form.admin{
+			width:60%;
+			max-width:850px;
+			min-width:320px;
+			margin:0 auto 0 auto;
+		}
+		#draftSaving{
+			position:fixed;
+			bottom:2%;
+			right:2%;
+			font-family:"Lato";
+			background-color:#B72E2E;
+			color:#FFFFFF;
+			padding:2%;
+			font-size:24px;
+			display:none;
+		}
+		div.formSection{
+			padding-bottom:3%;
+			width:95%;
+			margin-right:5%;
+			border-left:8px solid #FFFFFF;
+		}
+		div.formSection:hover{
+			background-color:#F2F2F2;
+			border-left:8px solid #2EB7B7;
+		}
+		div.formSection.highlight{background-color:#2EB7B7;}
+		
+		/*/////////////////////////////////////////////////
+		//////////        FORM FIELD INPUTS        ////////
+		/////////////////////////////////////////////////*/
+
+		.redactor_box{
+			width:90%;
+			margin:0 auto 0 auto;
+		}
+		.lgtext,
+		#showcaseManagement>fieldset>input{
+			width:90%;
+			line-height:24px;
+			font-size:18px;
+			height:36px;
+			padding:5px 0 5px0;
+		}
+		.formSection>label,#showcaseManagement > label{
+			font-size:24px;
+			font-weight:300;
+			color:#B72E2E;
+		}
+		.formSection > label{
+			margin:0 auto 3px auto;
+			width:90%;
+			padding-bottom:0px;
+		}
+		.formSection > input,
+		.formSection > label,
+		.formSection > textarea,
+		.formSection > legend,
+		.formSection > label,
+		form#articleform > fieldset > div > input,
+		form#articleform > fieldset > div > p,
+		.charleft,
+		#articlethumbnail
+		{
+			width:90%;
+			margin-right:5%;
+			margin-left:5%;
+			display:block;
+		}
+		#showcaseManagement > label{width:100%;}
+		
+		
+		#flddeck,
+		#fldpagename,
+		#fldkeywords,
+		#showcaseManagement>fieldset>textarea,
+		#showcaseManagement>fieldset>div>div>textarea{
+			font-family:"lato";
+			font-size:18px;
+		}
+		
+		#todocontainer{display:none;}
+		#fldcategoryidselector,#todolist{
+			width:90%;
+			display:block;
+			margin-left:-10px;
+			margin-bottom:0;
+			margin-top:0;
+			overflow:auto;
+		}
+		
+		#sortButtonContainer{
+			width:50%;
+			margin:0 auto 0 auto;
+			overflow:auto;
+		}
+		#sortButtonContainer>form{
+			display:inline-block;
+			float:left;
+		}
+		.sortButton{
+			width:100%;
+			height:50px;
+			font-size:16px;
+		}
+		
+		#fldcategoryidselector>li,
+		#todolist>li{width:43%;}
+		
+		#fldcategoryidselector>li,
+		#todolist>li,
+		.sortButton{
+			display:inline-block;
+			float:left;
+			padding:1% 5% 1% 1%;
+			border:1px solid black;
+			font-family:"lato";
+			font-weight:300;
+		}
+		
+		#fldcategoryidselector>li,
+		.showcaseAdditionButton,
+		#publishbutton,
+		.sortButton{
+			background-color:#F2F2F2;;
+		}
+		#fldcategoryidselector>li.catselected,
+		.todoitem>a,.todoitem{
+			background-color:#B72E2E;
+			color:#FFF;
+			font-weight:400;
+		}
+		.todoitem:hover{
+			background-color:#FFF0F3;
+			color:#3D3129;
+		}
+		
+		form#articleform > fieldset > textarea{overflow:scroll;font-size:18px;line-height:24px;}
+		form#articleform > fieldset > fieldset{border:none;}
+		form#articleform > fieldset > legend{padding-left:0;}
+		
+		form#articleform > fieldset > label{
+			padding:30px 0 0 0;
+			font-weight:bold;
+			text-transform:uppercase;
+			font-size:20px;
+		}
+		form.button{
+			width:inherit;
+			display:inline-block;
+			border:none;
+			margin:0 auto 0 auto;
+			padding:0;
+		}
+		.imageadd{
+			margin-left:5%;
+			width:50px;
+		}
+		/*##################################
+		######      ARTICLE FORM      ######
+		##################################*/
+		#container{
+			position:absolute;
+			top:190px;
+			margin-bottom:60px;
+			padding-bottom:60px;
+			overflow:auto;
+			height:auto;
+			width:100%;
+			min-width:950px;
+			background-color:#F6F3F1;
+		}
+		
+		#articlethumbnail{
+			background-color:#F8F1FF;
+			min-height:200px;
+		}
+		
+		#articlethumbnail>img{
+			max-width:100%;
+			max-height:300px;
+			margin:0 auto 0 auto;
+			display:block;
+		}
+		#formHelp{overflow:auto;}
+		#formHelp > iframe{height:370px;}
+		#execute{
+			margin:0 auto 0 auto;
+			text-align:center;
+			right:5%;
+		}
+		
+		#cmslinks > form > button{
+			padding:10px;
+			margin:0px;
+			font-weight:300;
+			letter-spacing:0.03em;
+			text-transform:uppercase;
+			font-size:16px;
+			display:inline-block;
+			width:150px;
+		}
+		
+		#publishbutton,#draftsavebutton{
+			width:90%;
+			height:75px;
+			font-size:32px;
+			font-family:"Lato";
+			font-weight:300;
+		}
+		#publishbutton:hover,#draftsavebutton:hover,
+		#fldcategoryidselector>li:hover,
+		.showcaseAdditionButton:hover,
+		.sortButton:hover{
+			color:#FFFFFF;
+			background-color:#2EB7B7;
+		}
+		
+		table a{color:#A32929;}
+		table a:hover{text-decoration:underline;}
+		
+		/*//////////////////////////////////////////////////
+		////////        SHOWCASE MANAGEMENT         ////////
+		//////////////////////////////////////////////////*/        		
+		.slideInputContainer{
+			border:1px dashed black;
+			margin:20px 0 20px 0;
+		}
+		.ui-icon{
+			display:inline-block;
+			height: 16px;
+			width: 16px;
+			margin:5px;	
+		}
+		#showcaseManagement{width:90%;margin:2% auto 0 auto;}
+		#showcaseManagement*{width:100%;}
+		#showcaseManagement > fieldset{
+			width:100%;
+			margin:7px auto 7px auto;
+			padding:0;
+			border-bottom:3px solid black;
+			border:left:2px solid black;
+			
+		}
+		#showcaseManagement > fieldset > label{padding-top:12px;}
+		#showcaseManagement > fieldset > legend,#addShowcase{
+			padding:5px 0 5px 0;
+			margin:0;
+			font-family:"Lato";
+			font-weight:300;
+			color:#3D3129;
+			font-size:20px;
+			font-style:normal;
+			width:100%;
+		}
+		#showcaseManagement img.thumb{
+			width:90%;
+			max-width:400px;
+			margin:0 auto 0 auto;
+			display:block;
+		}
+		img.iconImage{width:20px;height:20px;}
+		legend.showcaseUsed > .indicator{background-color:black;}
+		legend.problem,.todoitem:hover{background-color:#FFF0F3;}
+		legend.alright{background-color:#F8F1FF;}
+		.buttonContainer{height:25px;}
+		.buttonContainer > span{padding:5px;}
+		#addShowcase, #addShowcase>option{
+			width:350px;
+			font-size:18px;
+			line-height:36px;
+			height:36px;
+			margin:0 0 0 15px;
+		}
+		.showcaseAdditionButton{
+			width:24%;
+			height:60px;
+			margin:0;
+			padding-left:0;
+			padding-right:0;
+			display:inline-block;
+		}
+		
+		.slideInputContainer{
+			overflow:auto;
+			position:relative;
+		}
+		.slideInputContainer>div{
+			width:50%;
+			float:left;
+			display:inline;
+		}
+		.slideImageInput>progress{
+			width:100%;
+			height:35px;
+		}
+		.previewImg{max-width:100%;}
+		.slideInputContainer>div>img{
+			max-height:200px;
+			overflow:hidden;
+			display:inline-block;
+		}
+		.slideInputContainer>div>button{
+			position:absolute;
+			left:0;
+			top:0;
+			margin:0;
+			height:35px;
+		}
+		/*####################################
+		######      PREVIEW RENDER      ######
+		####################################*/
+		#backtotop{
+			font-size:80px;
+			line-height:0px;
+			position:relative;
+			bottom:0;
+			display:inline-block;
+			margin:0 auto -10px auto;
+			color:#3d3129;
+			transform: scale(6,1);
+			-ms-transform: scale(6,1); /* IE 9 */
+			-webkit-transform: scale(6,1); /* Safari and Chrome */	
+		}
+		#backtotop:hover{color:#A32929;}
+		#previewrender{
+			width: 850px;
+			margin: 50px auto 0 auto;
+			background-color: #B8EBFF;
+			padding: 35px 35px 10px 35px;
+			line-height: 48px;
+			color: #a32929;
+		}
+		
+		/*/////////////////////////////////////////
+		////////         LOGIN PAGE        ////////
+		/////////////////////////////////////////*/
+		.loginbutton{
+			width:90%;
+			margin:0 auto 0 20px;
+		}
+		#loginform{
+			width:400px;
+			margin:0 auto 0 auto;
+			padding-top:10%;
+		}
+		#loginformImage{
+			background-repeat:none;
+			background-size:cover;
+			margin:0 auto 0 auto;
+			height:600px;
+			width:1024px;
+		}
+		#loginform fieldset{background-color:#EBEBEB;}
+		#loginform > a{display:inline;text-transform:uppercase;color:#A32929;}
+		#loginform p,#loginform label#,loginform input{width:325px;margin:0 auto 0 auto;}
+		#loginform label{padding-left:0;margin-top:12px;}
+		#loginform > p{padding-bottom:0px;margin:0;}
+		#logout{display:inline;margin:0;padding:0;}
+		#loginform button{
+			display:block;
+			text-transform:uppercase;
+			font-family:'lato';
+			background-color:#F4F5ED;
+			color:#DC4E00;
+			font-weight:900;
+			width:100%;
+			padding:0;
+			margin:0;
+			height:50px;
+			font-size:22px;
+		}
+		#loginform button:hover{
+			background-color:#C7C9BE;
+		}
+		#registerForm{
+			margin-top:100px;
+		}
+		#loginform legend{
+			color:#DC4E00;
+			font-family: 'Bree Serif', serif;
+		}
+		#forgotPassword{
+			margin:0 0 15px 205px;
+			font-size:15px;
+			display:inherit;
+		}
+		/*##########################################
+		######      /publishing/edit.php      ######
+		##########################################*/
+		.editlinks{
+			width:100%;
+			background-color:#B72E2E;
+			height:40px;
+			text-align:right;
+		}
+		.editlinks > a{
+			padding:0 6px 0 6px;
+			vertical-align:middle;
+			display: table-cell;
+			float:right;
+		}
+		.editlinks > a > img{
+			width:20px;
+			vertical-align:bottom;
+		}
+		form.manage{
+			position:absolute;
+			top:0;
+			margin:0 auto 0 auto;
+			padding:0 18% 0 12%;
+			text-align:right;
+			width:70%;
+			background: rgba(0, 0, 0,  0.65);
+			height:15px;
+			display:none;
+		}
+		.manage>div{width:17%;}
+		form.manage.open{
+			height:65px;
+		}
+		.pubcatarticle{
+			border-top:15px solid #F6F3F1;
+		}
+		.pubcatarticle:hover{
+			border-top:15px solid #2EB7B7;
+		}
+		/*####################################
+		######      NAVIGATION BAR      ######
+		####################################*/
+		.altlogo > a {font-size:30px;line-height:35px;text-transform:uppercase;font-weight:bold;}
+		p.logincheck{font-size:36px;margin:50px auto 0 auto;text-align:center;}
+		
+		#cmslinks{display:block;text-transform:uppercase;font-weight:bold;}
+		#cmslinks>a{padding:15px 20px 15px 20px;color:#3d3129;display:inline-block;}
+		#cmslinks>a:hover{color:#B72E2E;}
+		#logout{border:none;}

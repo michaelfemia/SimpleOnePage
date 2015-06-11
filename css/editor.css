@@ -1,0 +1,109 @@
+.cms{display:none;}
+input.cms{width:450px;margin:0 auto 0 auto;font-size:18px;height:34px;margin-bottom:2%;padding:1%;}
+select.cms{display:none;}
+input.cms.nav{width:150px;}
+
+/* Headline */
+input.cms.blockHeadlineEdit{font-size:33px;margin:0;padding:12px;line-height:35px;font-family:'lato';font-weight:300;height:35px;text-align:center;}
+.blockHeadline{color:#FFF;}
+
+/* Paragraph & Quote*/
+textarea.cms,input.cms.blockHeadlineEdit{width:66%;padding:1%;margin:0 17% 0 17%;height:auto;}
+.quote,.blockText{color:#FFF;}
+.quote{padding:1%;}
+.quoteEdit{text-align:center;font-size:40px;line-height:42px;font-family:'Noto-Serif';font-style:italic;}
+.blockTextEdit{font-size:19px;line-height:27px;}
+
+/*###################################
+####    Editing Node Controls    ####
+###################################*/
+.editingNode,.tableRowEdit{width:100%;position:relative;display:block;overflow:auto;text-align:center;padding:1% 0 1% 0;}
+/*Editor*/
+div.editor,div.editor:before,div.tableRow,div.tableRow:before{width:84%;}
+div.editor,div.tableRow{float:left;text-align:left;}
+
+div.editor:before,div.tableRow:before{content:'',position:absolute;top:0;bottom:0;z-index:-1;left:0;}
+div.editor{background-color:rgba(40,40,40,0.95);outline:8px solid #282828;padding:0.25%;}
+
+h3.htmlType{color:#FFFFFF;text-align:left;font-size:20px;display:inline-block;}
+h1{width:84%;text-align:center;margin:0 0 0 14%;padding:3% 0 3% 0;}
+
+/*Node Rank*/
+div.nodeRank,div.nodeRank:before,div.tableRowEditButtons,div.tableRowEditButtons:before{width:13%;}
+div.nodeRank,div.tableRowEditButtons{float:left;}
+div.nodeRank:before,div.tableRowEditButtons:before{content:'',position:absolute;top:0;bottom:0;z-index:-1;left:86%;}
+
+/*Hide Illogical Rank Buttons*/
+div.department>.editingNode:nth-of-type(1)>div.nodeRank>button.nodeRankUp{
+	visibility:hidden;
+}
+div.department>.editingNode:last-of-type>div.nodeRank>button.nodeRankDown{
+	visibility:hidden;
+}
+
+/* Image Article Links */
+.imageGalleryEditor{width:25%;display:inline-block;padding-bottom:5%;}
+.imageGalleryEditor input,.imageArticleLinkImage>span{position:absolute;width:100%;text-align:center;}
+.imageArticleLinkImage>input:nth-of-type(2),.imageArticleLinkImage>span{top:3%;}
+.imageArticleLinkImage>input:nth-of-type(1){top:30%;}
+.imageArticleLinkImage>span{font-weight:700;color:red;}
+.imageArticleLinkTitle:hover{font-size:20px;}
+
+/*Dropzone Form*/
+.imageGalleryEditor .galleryImageEdit{padding:0;margin:0;width:100%;}
+form.dropzone{background-color:rgba(255,40,40,0.7);color:#FFF;height:200px;}
+div.largeImage>div{display:inline-block;}
+
+/* Gallery Edit Buttons */
+.imageGalleryEditor .editButtons{text-align:center;padding:10px 0 10px 0;background-color:#EBEBEB;}
+
+/* Gallery Strip*/
+div.galleryStrip{background-color:rgba(40,40,40,0.95);}
+
+/* Tables */
+.tableRow>div,.tableRow input.cms{text-align:left;height:20px;width:28%;margin-bottom:2%;padding:1%;}
+.tableRow input.cms{padding:0 0.75% 0 0.75%;}
+.tableRowEditButtons{padding-top:5px;}
+.tableRowEdit{border-bottom:2px solid black;}
+
+/* Parallax */
+.parallaxParent{height:auto;text-align:center;}
+.parallaxParent>*{height:auto;top:0;}
+.parallaxParent>div{display:inline-block;width:30%;overflow:hidden;}
+.parallaxParentEdit>div{height:200px;background-size:cover;}
+
+/* Large Images */
+.largeImageEdit{width:25%;height:215px;}
+
+/* iFrame */
+iframe+div{color:#FFF;margin:0 0 0 40%;text-align:center;font-size:24px;padding:22px 0 22px 0;display:inline-block;}
+iframe+div>span{padding-right:10px;}
+input.cms.vimeoEmbedEdit{width:200px;height:20px;}
+	
+/*###################################
+####    Image Rank Adjustment    ####
+###################################*/
+.rankAdjust>img,.deleteBlock>img,.nodeDelete>button>img,.nodeRank>button>img{width:20px;height:20px;}
+div.editButtons>button>img{width:20px;height:20px;}
+.largeImage .galleryImageRank{width:425px;height:300px;}
+div.largeImage img.gallery,div.largeImage form{width:350px;height:215px;}
+div.galleryStrip,div.largeImage{padding:0;}
+
+/*Adding New Elements*/
+.elementAdditionDiv{width:89%;text-align:center;margin:2% 0 0 11%;}
+.elementAdditionDiv *{font-size:22px;}
+
+/* Contact Meta */
+#contactMeta input{max-width:290px;}
+#contactMeta h2{max-width:290px;margin:0;display:block;}
+#homepageTitleWrap input{width:80%;text-align:center;}
+#navelements{width:340px;}
+
+/*Adding/Editing Page Blocks*/
+.navAdjustment button{margin:10px 2px 10px 2px;}
+.navAdjustment span{padding-left:15px;}
+#newBlockName{width:260px;margin:0;padding:4px;font-size:22px;}
+#newBlockAdditionContainer{position:relative;text-align:left;width:98%;padding:0;margin: 0;height:38px;overflow:hidden;}
+#newBlockAdditionContainer img{width:25px;height:25px;}
+#newBlockAdditionContainer button{width:36px;padding:3px;margin:3px 5px 2px 2px;}
+#newBlockAdditionContainer>input,#newBlockAdditionContainer>button{display:inline-block;}
