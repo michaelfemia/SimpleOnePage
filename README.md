@@ -13,12 +13,13 @@ Set-Up should take less than 10 minutes.
 8. Log-in and start building your site.
 
 REMAINING TASKS FOR SETUP
-
 1. Auto redirect from setup.php to login/register
 2. Pare down non-essential setup.php fields; clearly indicate required fields
 3. Instructions to protect setup.SQL and login/register.php
 4. Plot out dummy content and tutorials
 5. Video setup tutorial w/ screenshots and voiceover
+6. Simplify log-in mechanism and check security.
+7. Backup configuration w/ CRON script.
 
 TERMS OF USE
 1. Unlimited use for personal non-commercial applications.
