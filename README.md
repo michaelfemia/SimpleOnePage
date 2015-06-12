@@ -16,8 +16,6 @@ Set-Up should take less than 10 minutes.
 6. Start building your site. 
 7. Protect setup.sql and setup.php: change the permissions, or copy them to your computer and delete them from your server.
 
-TERMS OF USE
-1. Unlimited use for personal non-commercial applications.
-2. Any use by a company, or an individual with paid advertisements requires a license. 
+Licensed for non-commercial use
 
 Contact Mike at Michael.Femia@gmail.com with any inquiries.
