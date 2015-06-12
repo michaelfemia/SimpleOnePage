@@ -111,7 +111,7 @@ print '<div id="navWrapper">';
 		print '</div>';
 
 		
-		if($editingPage==true){print'<a href="login/?logout=1">Log-Out</a>';}
+		if($editingPage==true){print'<a id="logoutButton" href="login/?logout=1">Log-Out</a>';}
 		print '</span>';
 		
 		//SCROLL PROGRESS INDICATOR

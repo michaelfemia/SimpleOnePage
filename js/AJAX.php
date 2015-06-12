@@ -136,6 +136,7 @@ if(isset($_POST['newBlockElement'])){
 
 //Dropzone Image Handler--Consolidate with global function
 if (    ( isset($_POST['blockID']) )   &&   (   isset($_POST['dropGo']) )   &&   ( !empty($_FILES) )    ) {	
+	
 	$data['fired']="Dropzone image handler for block galleries.";
 	$inFile=$_FILES['file']['tmp_name'];
 	$source_folder="../img/";
@@ -189,13 +190,13 @@ if (    ( isset($_POST['blockID']) )   &&   (   isset($_POST['dropGo']) )   &&  
 	//Establish its rank
 	$sql="SELECT MAX(fldRank) AS currentMax FROM tblGalleryBlocks ";
 	$sql.="WHERE fkBlockElementID='".$blockID."'";
-	
 	$r=$mysqli->query($sql);
 	if($r->num_rows>0){
 		$max=mysqli_fetch_assoc($r);
 		$rank=$max['currentMax']+1;
 	}
 	if($r->num_rows<1){$rank=1;}
+	
 	
 	//Should there only be one image in this element?
 	$elementTypeFK=singleValueSQL("tblBlockElements","fkElementType","pkBlockElementID='".$blockID."'");
@@ -204,16 +205,13 @@ if (    ( isset($_POST['blockID']) )   &&   (   isset($_POST['dropGo']) )   &&  
 		deleteQuery("tblGalleryBlocks","fkBlockElementID='".$blockID."'");
 		$data['removeCurrentImage']=true;
 	}
-
 	//Insert the image into the trigger gallery
 	$table="tblGalleryBlocks";
 	$fields=array("fkBlockElementID","fkImageID","fldRank","fldCaption","fldLink");
 	$values=array($blockID,$thisImageID,$rank,"Caption","Link");
-	insertQuery($table,$fields,$values);
-	
+	$insert=insertQuery($table,$fields,$values);
 	$data['imageName']=$encoded;
 	$data['triggerBlock']=$blockID;
-	
 	$data['imageID']=$thisImageID;
 	$data['editingNode']=formatImage($thisImageID,$blockID,true,"1");
 }

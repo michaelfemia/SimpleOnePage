@@ -1,20 +1,17 @@
 <?
 $setupFields=array(
-	"html_root"=>"HTML Root",
+	"html_root"=>"HTML Root (http://www.yourDomain.com)",
 	"domain_title"=>"Domain Title",
-	"titleTagline"=>"Tagline",
-	"adminName"=>"Administrator Name",
-	"adminEmail"=>"Administrator Email",
-	"adminPassword"=>"Administrator Password",
-	"twitterHandle"=>"Twitter Handle",
+	"adminName"=>"Admin Name",
+	"adminEmail"=>"Admin Email",
+	"twitterHandle"=>"Twitter Handle (optional)",
 	"dbHost"=>"Database Host",
 	"dbDatabase"=>"Database Name",
 	"dbUsername"=>"Database Username",
 	"dbPassword"=>"Database Password",
-	"imageDirectory"=>"Image Directory",
-	"searchDescription"=>"SEO Description",
-	"socialMediaThumbIMG"=>"Social Media Thumbnail",
-	"searchKeywords"=>"Site Keywords",
-	"googleAnalytics"=>"Google Analytics Script"
+	"searchDescription"=>"Meta Description",
+	"socialMediaThumbIMG"=>"Default Social Media Post Thumbnail",
+	"searchKeywords"=>"Meta Keywords",
+	"googleAnalytics"=>"Google Analytics JavaScript"
 );
 ?>

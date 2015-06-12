@@ -3,6 +3,7 @@ error_reporting(0);
 date_default_timezone_set('America/New_York');
 $root='/';
 $blueImp=false;
+$imageDirectory="img";
 include('mgmt/globalVariables.php');
 define("HOST",$dbHost);     
 define("USER",$dbUsername);     
@@ -69,7 +70,7 @@ EOT;
 	
 	//BlueImp Player
 	if($type==6 && $editingPage!==true){$return.=blueimpPlayer($idNumber);}
-	$return.=editOnly(editNodeOpen($idNumber,$class));
+	$return.=editOnly(editNodeOpen($idNumber,$class,$basicType));
 	
 	if($basicType==6){$return.=$iframe;}
 	else{$return.=blockElementHTMLWrap($htmlType,$typeName,$HTMLID,$childCount,$content);}
@@ -140,17 +141,18 @@ $closeTag=<<<EOT
 EOT;
 return $openTag.$content.$closeTag;
 }
-function editNodeOpen($elementIDNum,$class){			
+function editNodeOpen($elementIDNum,$class,$basicType){			
+if($basicType<=2){$textClass=" text";}
 $editNodeOpen=<<<EOT
-<div class="editingNode" id="editingNode${elementIDNum}">
+<div class="editingNode${textClass}" id="editingNode${elementIDNum}">
 	<div class="nodeRank">
 		<button class="nodeRankUp" onClick="shift('blockElement','$elementIDNum','up')"><img src="img/icons/uparrow.png"></button>
 		<button class="nodeRankDown" onClick="shift('blockElement','$elementIDNum','down')"><img src="img/icons/downarrow.png"></button>
 		<button class="deleteNode" onClick="deleteElement('blockElement','$elementIDNum','editingNode${elementIDNum}')"><img src="img/icons/trash.png"></button>
 	</div>
 	<div class="editor">	
-	<h3 class="htmlType">$class</h3>
 EOT;
+if($basicType>2){$editNodeOpen.='<h3 class="htmlType">'.$class.'</h3>';}
 return $editNodeOpen;
 }
 function editNodeClose(){
@@ -241,13 +243,13 @@ function newElementAdditionButton($blockID){
 	global $mysqli;
 	$sql="SELECT pkTypeID,fldSelectName FROM tblBlockElementTypes";
 	$r=$mysqli->query($sql);
-	$select='<select>';
+	$select='<div class="selectReplace closed">';
 	while($result=mysqli_fetch_assoc($r)){
-		$select.='<option value="'.$result['pkTypeID'].'">'.$result['fldSelectName'].'</option>';
+		$select.='<div name="'.$blockID.'" value="'.$result['pkTypeID'].'">'.$result['fldSelectName'].'</div>';
 	}
-	$select.='</select>';
+	$select.='</div>';
 	
-	$button='<button type="button" value="'.$blockID.'" class="newBlockElement">Add</button>';
+	$button='<button id="elementAdditionButton'.$blockID.'" type="button" value="'.$blockID.'" class="newBlockElement">Add New Element</button>';
 	$div='<div id="elementAdditionDiv'.$blockID.'" class="elementAdditionDiv">'.$button.$select.'</div>';
 	$return=editOnly($div);
 	return $return;
@@ -437,8 +439,8 @@ function insertQuery($table,$fields,$values){
 	$valueList="";foreach($values as $value){$valueList.="'".$value."',";}
 	$valueList=rtrim($valueList,",");
 	$fieldList=rtrim($fieldList,",");	
-	$q=$mysqli->query("INSERT INTO ".$table." (".$fieldList.") VALUES(".$valueList.")");
-	return $mysqli->insert_id;
+	$mysqli->query("INSERT INTO ".$table." (".$fieldList.") VALUES(".$valueList.")");
+	return $mysqli->insert_id;		
 }
 function deleteQuery($table,$condition){
 	global $mysqli;

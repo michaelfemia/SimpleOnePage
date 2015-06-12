@@ -26,10 +26,23 @@
 			$("#newBlockName").val('');
 		});
 		
-		//ADD NEW ELEMENTS
+		//REVEAL OPTIONS FOR NEW CHILD ELEMENTS IN A BLOCK
 		$(".newBlockElement").click(function(){
-			var thisBlockID=$(this).attr('value');
-			var newType=$(this).siblings("select").children("option:selected").val();
+			var target=$(this).siblings(".selectReplace");
+			if(target.hasClass("closed")){
+				target.addClass("open");
+				target.removeClass("closed");
+			}
+			else if(target.hasClass("open")){
+				target.addClass("closed");
+				target.removeClass("open");
+			}
+		});
+		
+		//ADD NEW CHILD ELEMENTS TO THE BLOCK
+		$(".elementAdditionDiv").children(".selectReplace").children("div").click(function(){
+			var thisBlockID=$(this).attr('name');
+			var newType=$(this).attr('value');
 			var postFormData=new FormData();
 				postFormData.append("thisBlockID",thisBlockID);
 				postFormData.append("newType",newType);
@@ -251,9 +264,9 @@
 				$('<div/>', {
 					id:newBlockDivID,
 					class:'department',
-					html:data['editingNode']
+					html:'<h1>'+newBlockName+'</h1>'+data['editingNode']
 				}).appendTo('#block'+thisBlockID);
-					
+				
 				//Travel to the new section
 				$("html, body").animate({scrollTop: $('#'+newBlockDivID).offset().top-navOffset }, 500);
 				$("#navelements").fadeOut();
