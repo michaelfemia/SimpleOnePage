@@ -94,8 +94,8 @@ function retrieveBlocks($editBoolean){
 	while($blocks=mysqli_fetch_array($returnBlocks)){
 		$blockID=$blocks['pkPageBlockID'];
 		print "\t".'<div class="pageBlock" id="block'.$blocks['pkPageBlockID'].'">'."\n";
-			print "\t\t".'<div class="department" id="'.$blocks['fldPageLink'].'">'."\n";
-			print editOnly("<h1>".$blocks['fldPageName'].'</h1>');
+			print editOnly("<h1 class='blockName'>".$blocks['fldPageName'].'</h1>');
+			print "\t\t".'<ul class="childElementContainer" id="'.$blocks['fldPageLink'].'">'."\n";
 			$sql2="SELECT pkBlockElementID FROM tblBlockElements ";
 			$sql2.="WHERE fkBlock='".$blockID."' ";
 			$sql2.="ORDER BY fkBlock, fldPosition ASC ";
@@ -104,7 +104,7 @@ function retrieveBlocks($editBoolean){
 				print retrieveBlockElements($blockElements['pkBlockElementID'],false);
 			}
 			echo newElementAdditionButton($blockID);
-			print "\t\t".'</div><!--.department-->'."\n";
+			print "\t\t".'</ul><!--.childElementContainer-->'."\n";
 		print "\t".'</div><!--.pageBlock-->'."\n\n";
 	}
 }
@@ -142,23 +142,25 @@ EOT;
 return $openTag.$content.$closeTag;
 }
 function editNodeOpen($elementIDNum,$class,$basicType){			
+//draggable="true" ondragstart="drag(event,'editingNode${elementIDNum}')" ondrop="drop(event,'editingNode${elementIDNum}')" ondragover="allowDrop(event,'editingNode${elementIDNum}')"
 if($basicType<=2){$textClass=" text";}
 $editNodeOpen=<<<EOT
-<div class="editingNode${textClass}" id="editingNode${elementIDNum}">
+<li class="editingNode${textClass}" id="editingNode${elementIDNum}" value="${elementIDNum}">
 	<div class="nodeRank">
-		<button class="nodeRankUp" onClick="shift('blockElement','$elementIDNum','up')"><img src="img/icons/uparrow.png"></button>
-		<button class="nodeRankDown" onClick="shift('blockElement','$elementIDNum','down')"><img src="img/icons/downarrow.png"></button>
 		<button class="deleteNode" onClick="deleteElement('blockElement','$elementIDNum','editingNode${elementIDNum}')"><img src="img/icons/trash.png"></button>
+		<img class="dragHandle" src="img/icons/sort.png">
 	</div>
 	<div class="editor">	
 EOT;
+//<button class="nodeRankUp" onClick="shift('blockElement','$elementIDNum','up')"><img src="img/icons/uparrow.png"></button>
+//<button class="nodeRankDown" onClick="shift('blockElement','$elementIDNum','down')"><img src="img/icons/downarrow.png"></button>
 if($basicType>2){$editNodeOpen.='<h3 class="htmlType">'.$class.'</h3>';}
 return $editNodeOpen;
 }
 function editNodeClose(){
 $editNodeClose=<<<EOT
 	</div>
-	</div><!--.editingNode-->
+	</li><!--.editingNode-->
 EOT;
 return $editNodeClose;
 }

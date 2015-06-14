@@ -90,9 +90,10 @@
 				}
 			}
 		});
-		
 		toggleEditSection("h1");
-		toggleEditSection("h3.htmlType");
+		toggleEditSection("h3.htmlType");		
+		
+		dragAndDrop();
 	});
 	$(document).keypress(function(e){
 		if(e.which == 13) {
@@ -261,10 +262,10 @@
 				}).appendTo('#contentWrapper');
 
 				//Populate with Editing Nodes
-				$('<div/>', {
+				$('<ul/>', {
 					id:newBlockDivID,
-					class:'department',
-					html:'<h1>'+newBlockName+'</h1>'+data['editingNode']
+					class:'childElementContainer',
+					html:'<li><h1>'+newBlockName+'</h1></li>'+data['editingNode']
 				}).appendTo('#block'+thisBlockID);
 				
 				//Travel to the new section
@@ -409,8 +410,11 @@
 				"elementID":id
 			};
 		}
-		editingNode.remove();
-		simpleAJAX(postValues);
+		var message="Are you sure?";
+		if (confirm(message)) {
+			editingNode.remove();
+			simpleAJAX(postValues);
+		}
 	}
 	
 	//Update Value
@@ -534,6 +538,26 @@
 			simpleAJAX(postValues);
 		}
 	}
-	
-	//Other UI
-	
+	function dragAndDrop(){
+		$(".childElementContainer").each(function(){
+			var blockParent= $(this).attr('id');
+			$(this).sortable({
+				cursor: 'move',
+				handle:'.dragHandle',
+				update: function(event,ui,blockParent) {
+					var justDragged=ui.item.attr('id');
+					var newPosition=$("#"+justDragged).index();
+					var block=$("#"+justDragged).parent();
+					var childOrder=[];
+					block.children().each(function(){
+						childOrder.push($(this).attr('value'));
+					});
+					var postValues={
+					  "dragToReorder":"true",
+					  "newOrder":childOrder
+					};
+					simpleAJAX(postValues);
+				}
+			});
+		});
+	}
