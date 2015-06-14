@@ -53,23 +53,27 @@ if($editingPage==true){include('mgmt/editingHead.php');}?>
 		}
 	}
 	if($chartPage=="1"){$JSScripts[]='js/Chart.min.js';}
+	if($editingPage==true){
+		$JSScripts[]='js/jquery-ui.min.js';
+		$JSScripts[]='js/editor.js';
+		$JSScripts[]='mgmt/dropzone.js';
+		print'<link rel="stylesheet" href="css/editor.css" />';
+		print'<link rel="stylesheet" href="mgmt/dropzone.css" />';
+		print'<script>var editingPage=true;</script>';
+	}
+	
+	//jquery-ui.min
 	foreach($JSScripts as $script){
 		print '<script type="text/javascript" ';
 		print 'src="'.$html_root.$script.'"></script>'."\n";
 	}
-	if($editingPage==true){
-			print'<link rel="stylesheet" href="css/editor.css" />';
-			print'<link rel="stylesheet" href="mgmt/dropzone.css" />';
-			print'<script type="text/javascript" src="js/editor.js"></script>';
-			print'<script src="mgmt/dropzone.js"></script>';
-			print'<script>var editingPage=true;</script>';
-		}
-		if($loginPage==true){
-			print'<link href="../css/admin.css" rel="stylesheet" type="text/css" />';
-			print'<link rel="stylesheet" href="../css/editor.css" />';
-			print'<script type="text/JavaScript" src="js/sha512.js"></script> ';
-			print'<script type="text/JavaScript" src="js/forms.js"></script>';			
-		}
+
+	if($loginPage==true){
+		print'<link href="../css/admin.css" rel="stylesheet" type="text/css" />';
+		print'<link rel="stylesheet" href="../css/editor.css" />';
+		print'<script type="text/JavaScript" src="js/sha512.js"></script> ';
+		print'<script type="text/JavaScript" src="js/forms.js"></script>';			
+	}
 	?>
 	<title><? print $domain_title;?></title>	
 </head>

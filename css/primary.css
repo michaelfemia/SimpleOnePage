@@ -25,6 +25,7 @@ a {color: inherit;text-decoration: none;}
 #navMenuDropdown div{text-transform:uppercase;font-size:16px;font-weight:900;line-height:25px;display:inline-block;vertical-align:middle;height:45px;letter-spacing:0.03em;}
 #navMenuDropdown img{width: 30px;height: 30px;border: none;}
 #navMenuDropdown button{border:none;background-color:rgba(0,0,0,0);}
+#navMenuDropdown *{cursor:context-menu;}
 
 /* Nav Menu Items*/
 #navelements{width: 25%;height: auto;min-width: 200px;padding: 1% 1% 1%;margin: 0;overflow: scroll;background-color:rgba(40,40,40,0.9);position: fixed;display: none;top: 44px;left:5%;z-index: 2000;}
@@ -97,13 +98,13 @@ div#contentWrapper{width:100%;margin:0 auto 0 auto;}
 /* PAGE BLOCK ELEMENTS */
 .pageBlock{padding-bottom:20px;}
 .pageBlock:last-of-type{padding-bottom:0;}
-.department{margin:0;padding:0;border-bottom:3px solid black;position:relative;display:block;}
-.department:last-of-type{border-bottom:none;}
+.childElementContainer{width:100%;margin:0;padding:0;border-bottom:3px solid black;position:relative;display:block;}
+.childElementContainer:last-of-type{border-bottom:none;}
 h2{font-size:36px;line-height:37px;padding-bottom:1.5px;}
 .blockHeadline{font-weight:700;color:#282828;font-family:'Lato';text-align:center;padding-top:30px;padding-bottom:15px;}
 
 /* Text */
-.blockHeadline,.quote,.blockText,ul,ol{margin:0% auto 1.25% auto;}
+.blockHeadline,.quote,.blockText{margin:0% auto 1.25% auto;}
 .blockHeadline{width:62%;}
 .quote,.blockText,ul,ol{width:66%;}
 

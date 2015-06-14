@@ -11,7 +11,7 @@ print '</div><!--#contentWrapper-->';
 ?>
 </div><!--#contentWrapper"-->
 <div id="contact">
-	<div class="department" style="padding:0;"
+	<div class="childElementContainer" style="padding:0;"
 		<div id="contactVisits">
 			<div id="contactMeta" style="max-width:330px;">
 				<h2 class="blockHeadline" style="text-align:left;color:#89CEDE;"></h2>
@@ -27,7 +27,7 @@ print '</div><!--#contentWrapper-->';
 				<? print $updateFields['contactEmail'];?>
 			</div><!--#contactMeta-->
 		</div><!--#contactVisits-->
-	</div><!--.department-->
+	</div><!--.childElementContainer-->
 </div><!--#contact-->
 
 

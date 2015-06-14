@@ -313,6 +313,21 @@ if(isset($_POST['reorder'])){
 		$data[]=updateQuery($table,$fields,$condition);
 	}
 }
+if(isset($_POST['dragToReorder'])){
+	$order=explode(',',$_POST['newOrder']);
+	$i=1;
+	foreach($order as $child){
+		if($child>0){
+			$table="tblBlockElements";
+			$fields=array("fldPosition"=>$i);
+			$condition="pkBlockElementID='".$child."'";
+			$data[]=updateQuery($table,$fields,$condition);
+			$i++;
+		}
+	}
+}
+
+
 
 //New Table Row
 if(isset($_POST['newTableRow'])){

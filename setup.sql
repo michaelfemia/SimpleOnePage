@@ -321,3 +321,53 @@ ALTER TABLE `tblPageBlocks`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Table structure for table `tblTableCells`
+--
+
+CREATE TABLE `tblTableCells` (
+  `fkRowID` smallint(8) NOT NULL,
+  `fldColumn` tinyint(3) NOT NULL,
+  `fldValue` varchar(5000) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblTableCells`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblTableRows`
+--
+
+CREATE TABLE `tblTableRows` (
+  `pkRowID` int(11) NOT NULL auto_increment,
+  `fkBlockElementID` int(8) NOT NULL,
+  `fldPosition` smallint(4) NOT NULL,
+  PRIMARY KEY  (`pkRowID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `tblTableRows`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblVideoAssets`
+--
+
+CREATE TABLE `tblVideoAssets` (
+  `fkPageID` mediumint(9) NOT NULL,
+  `fldProvider` tinyint(1) NOT NULL,
+  `fldVideoID` varchar(25) NOT NULL,
+  `fldVideoThumb` varchar(200) NOT NULL,
+  `fldVideoEmbed` varchar(400) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tblVideoAssets`
+--
