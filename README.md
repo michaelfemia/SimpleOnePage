@@ -1,10 +1,10 @@
 # SimpleOnePage
 More intuitive CMS for a basic single page website with various child blocks:
-• Text: headers, paragraphs, quotes, tables
-• Embeds: YouTube & Vimeo
-• Images: widescreen images, modal galleries, small filmstrips.
-• File Links: .pdfs or online articles with image previews.
-• Interface improvements and more element types to follow.
+ • Text: headers, paragraphs, quotes, tables
+ • Embeds: YouTube & Vimeo
+ • Images: widescreen images, modal galleries, small filmstrips.
+ • File Links: .pdfs or online articles with image previews.
+ • Interface improvements and more element types to follow.
 
 Set-Up should take less than 10 minutes.
 
